@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import time
 from tree_sitter import Language
 
 
@@ -10,6 +11,7 @@ with open("repos.txt", "r") as file:
         url, commit = line.split()
         clone_directory = os.path.join("vendor", url.rstrip("/").split("/")[-1])
         repos.append((url, commit, clone_directory))
+        time.sleep(2) # to avoid throttling by GH
 
 # During the build, this script runs several times, and only needs to download
 # repositories on first time.

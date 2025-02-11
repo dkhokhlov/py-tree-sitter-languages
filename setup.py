@@ -8,8 +8,6 @@ init = (pathlib.Path('tree_sitter_languages') / '__init__.py').read_text()
 match = re.search(r"^__version__ = '(.+)'$", init, re.MULTILINE)
 version = match.group(1)
 
-os.environ["MAKEFLAGS"] = "-j1"
-
 with open('README.rst') as reader:
     readme = reader.read()
 
